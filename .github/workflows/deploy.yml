@@ -10,6 +10,8 @@ jobs:
     build:
         runs-on: ubuntu-latest
         steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
             - name: Upload site
               uses: actions/upload-pages-artifact@v3
               with:
@@ -29,15 +31,7 @@ jobs:
         # Specify runner + deployment step
         runs-on: ubuntu-latest
         continue-on-error: false
-        steps:
-            - name: Checkout repository
-              uses: actions/checkout@v4
-
-            - name: Setup Node.js
-              uses: actions/setup-node@v3
-              with:
-                node-version: '20'
-            
+        steps: 
             - name: Deploy to GitHub Pages
               id: deploy-to-github-pages 
               uses: actions/deploy-pages@v4
